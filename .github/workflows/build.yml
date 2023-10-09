@@ -9,6 +9,8 @@ on:
   workflow_dispatch:
   # pull_request:
   #   branches: [ "main" ]
+env:
+  OUT_DIR: "${{ github.workspace }}/out"
 
 jobs:
   build:
@@ -28,4 +30,12 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: node buildstore.js
+      - run: node ./buildstore.js
+      
+      - name: 🧧 Create GitHub Release => (${{ github.run_number }})
+        continue-on-error: true
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: v${{ github.run_number }}
+          files: "Store.js|Store-cdn.js"
+          generate_release_notes: true
