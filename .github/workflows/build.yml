@@ -28,4 +28,4 @@ jobs:
         with:
           node-version: 16
           registry-url: https://registry.npmjs.org/
-      - run: node ./buildstore.js
+      - run: node buildstore.js
