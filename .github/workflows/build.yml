@@ -36,5 +36,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: v${{ github.run_number }}
-          files: "Store.js"
+          files: |
+            "Store.js"
+            "Store-cdn.js"
+
           generate_release_notes: true
