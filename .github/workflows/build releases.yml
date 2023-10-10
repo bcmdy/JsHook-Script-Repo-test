@@ -26,15 +26,15 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 16
-      - name: Build Store.json&Store-cdn.json
-        run: node ./buildstore.js
-      - name: git push
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          git add .
-          git commit -m "Action Updates"
-          git push
+      # - name: Build Store.json&Store-cdn.json
+      #   run: node ./buildstore.js
+      # - name: git push
+      #   run: |
+      #     git config --global user.name "GitHub Action"
+      #     git config --global user.email "action@github.com"
+      #     git add .
+      #     git commit -m "Action Updates"
+      #     git push
       - name: 🧧 Create GitHub Release => (${{ github.run_number }})
         continue-on-error: true
         uses: softprops/action-gh-release@v1
