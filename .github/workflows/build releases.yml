@@ -1,11 +1,12 @@
-name: Updates
+name: build releases
 
 on:
-  push:
-    branches: [ "main" ]
-  workflow_dispatch:
+  # push:
+  #   branches: [ "main" ]
   # pull_request:
   #   branches: [ "main" ]
+  workflow_dispatch:
+
 permissions:
   contents: write
 # 一个workflow由执行的一项或多项job
@@ -34,3 +35,9 @@ jobs:
           git add .
           git commit -m "Action Updates"
           git push
+      - name: 🧧 Create GitHub Release => (${{ env.builddate }})
+        continue-on-error: true
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: V${{ github.run_number }}
+          generate_release_notes: true
