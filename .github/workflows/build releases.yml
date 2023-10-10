@@ -35,7 +35,7 @@ jobs:
           git add .
           git commit -m "Action Updates"
           git push
-      - name: 🧧 Create GitHub Release => (${{ env.builddate }})
+      - name: 🧧 Create GitHub Release => (${{ github.run_number }})
         continue-on-error: true
         uses: softprops/action-gh-release@v1
         with:
